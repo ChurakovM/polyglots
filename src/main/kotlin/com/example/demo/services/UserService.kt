@@ -3,6 +3,7 @@ package com.example.demo.services
 import com.example.demo.mappings.UserMapper
 import com.example.demo.repositories.UserRepository
 import com.example.demo.repositories.dbmodels.UserDbModel
+import com.example.model.GetMultipleUsersResponse
 import com.example.model.GetUserResponse
 import com.example.model.PostUserRequest
 import com.example.model.PostUserResponse
@@ -25,10 +26,11 @@ class UserService(
         return userMapper.userDbModelToGetUserResponse(userDbModel)
     }
 
-//    fun getMultipleUsers(): GetMultipleUsersResponse {
-//        val foundUsers: List<UserDbModel> = userRepository.findAll()
-//        return GetMultipleUsersResponse(foundUsers)
-//    }
+    fun getMultipleUsers(): GetMultipleUsersResponse {
+        val foundUsers: List<UserDbModel> = userRepository.findAll()
+        val mappedUsers = userMapper.listOfUserDbModelToListOfCommonUserModelWithId(foundUsers)
+        return GetMultipleUsersResponse(mappedUsers)
+    }
 
     fun removeUserById(userId: UUID) = userRepository.deleteById(userId)
 

@@ -20,6 +20,15 @@ paths:
             application/json:
               schema:
                 $ref: "user-spec-components.yaml#/components/schemas/PostUserResponse"
+    get:
+      summary: Endpoint to get multiple users
+      responses:
+        "200":
+          description: Users are successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: "user-spec-components.yaml#/components/schemas/GetMultipleUsersResponse"
   /users/{userId}:
     get:
       summary: Endpoint to get a user by ID

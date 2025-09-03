@@ -49,6 +49,12 @@ components:
       allOf:
         - $ref: "#/components/schemas/CommonUserModelWithId"
     GetMultipleUsersResponse:
-      type: array
-      items:
-        $ref: "#/components/schemas/CommonUserModelWithId"
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            allOf:
+              - $ref: "#/components/schemas/CommonUserModelWithId"
+      required:
+        - users

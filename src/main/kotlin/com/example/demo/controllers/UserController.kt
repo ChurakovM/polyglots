@@ -1,6 +1,7 @@
 package com.example.demo.controllers
 
 import com.example.demo.services.UserService
+import com.example.model.GetMultipleUsersResponse
 import com.example.model.GetUserResponse
 import com.example.model.PostUserRequest
 import com.example.model.PostUserResponse
@@ -23,9 +24,9 @@ open class UserController(private val userService: UserService) {
 
     @GetMapping("/{userId}")
     fun getUserById(@PathVariable userId: UUID): GetUserResponse = userService.getUserById(userId)
-//
-//    @GetMapping
-//    fun getMultipleUsers(): GetMultipleUsersResponse = userService.getMultipleUsers()
+
+    @GetMapping
+    fun getMultipleUsers(): GetMultipleUsersResponse = userService.getMultipleUsers()
 
     @DeleteMapping("/{userId}")
     fun removeUserById(@PathVariable userId: UUID) = userService.removeUserById(userId)

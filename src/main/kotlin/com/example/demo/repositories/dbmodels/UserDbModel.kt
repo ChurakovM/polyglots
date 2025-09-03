@@ -8,7 +8,6 @@ import java.util.*
 data class UserDbModel(
 
     @Id
-
     var id: UUID,
 
     var nickname: String,
