@@ -2,6 +2,12 @@ components:
   schemas:
     CommonUserModel:
       type: object
+      required:
+        - nickname
+        - email
+        - phoneNumber
+        - firstName
+        - secondName
       properties:
         nickname:
           type: string
@@ -24,24 +30,24 @@ components:
           type: string
           minLength: 1
           maxLength: 50
-
     CommonUserModelWithId:
       allOf:
         - $ref: "#/components/schemas/CommonUserModel"
         - type: object
+          required:
+            - id
           properties:
             id:
               type: string
-
     PostUserRequest:
-      $ref: "#/components/schemas/CommonUserModel"
-
+      allOf:
+        - $ref: "#/components/schemas/CommonUserModel"
     PostUserResponse:
-      $ref: "#/components/schemas/CommonUserModelWithId"
-
+      allOf:
+        - $ref: "#/components/schemas/CommonUserModelWithId"
     GetUserResponse:
-      $ref: "#/components/schemas/CommonUserModelWithId"
-
+      allOf:
+        - $ref: "#/components/schemas/CommonUserModelWithId"
     GetMultipleUsersResponse:
       type: array
       items:

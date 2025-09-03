@@ -1,14 +1,13 @@
 package com.example.demo.services
 
 import com.example.demo.mappings.UserMapper
-import com.example.demo.models.GetMultipleUsersResponse
-import com.example.demo.models.GetUserResponse
-import com.example.demo.models.PostUserRequest
-import com.example.demo.models.PostUserResponse
 import com.example.demo.repositories.UserRepository
 import com.example.demo.repositories.dbmodels.UserDbModel
+import com.example.model.GetUserResponse
+import com.example.model.PostUserRequest
+import com.example.model.PostUserResponse
 import org.springframework.stereotype.Service
-import java.util.UUID
+import java.util.*
 
 @Service
 class UserService(
@@ -26,10 +25,10 @@ class UserService(
         return userMapper.userDbModelToGetUserResponse(userDbModel)
     }
 
-    fun getMultipleUsers(): GetMultipleUsersResponse {
-        val foundUsers: List<UserDbModel> = userRepository.findAll()
-        return GetMultipleUsersResponse(foundUsers)
-    }
+//    fun getMultipleUsers(): GetMultipleUsersResponse {
+//        val foundUsers: List<UserDbModel> = userRepository.findAll()
+//        return GetMultipleUsersResponse(foundUsers)
+//    }
 
     fun removeUserById(userId: UUID) = userRepository.deleteById(userId)
 

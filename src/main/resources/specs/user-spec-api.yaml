@@ -7,7 +7,7 @@ paths:
     post:
       summary: Endpoint to create a new user
       requestBody:
-        description: User info to create
+        description: User information to create
         required: true
         content:
           application/json:
@@ -15,9 +15,24 @@ paths:
               $ref: "user-spec-components.yaml#/components/schemas/PostUserRequest"
       responses:
         "201":
-          description: New User is successfully created
+          description: New user is successfully created
           content:
             application/json:
               schema:
                 $ref: "user-spec-components.yaml#/components/schemas/PostUserResponse"
-
+  /users/{userId}:
+    get:
+      summary: Endpoint to get a user by ID
+      parameters:
+        - in: path
+          name: userId
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: User is successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: "user-spec-components.yaml#/components/schemas/GetUserResponse"

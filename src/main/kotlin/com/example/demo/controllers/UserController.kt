@@ -1,6 +1,9 @@
 package com.example.demo.controllers
 
 import com.example.demo.services.UserService
+import com.example.model.GetUserResponse
+import com.example.model.PostUserRequest
+import com.example.model.PostUserResponse
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
@@ -13,17 +16,13 @@ import java.util.UUID
 
 @RestController
 @RequestMapping("/users")
-class UserController(private val userService: UserService) {
-
-    companion object {
-        val list = emptyList<String>() + (emptyList())
-    }
+open class UserController(private val userService: UserService) {
 
     @PostMapping
     fun createUser(@Validated @RequestBody postUserRequest: PostUserRequest): PostUserResponse = userService.createUser(postUserRequest)
 
-//    @GetMapping("/{userId}")
-//    fun getUserById(@PathVariable userId: UUID): GetUserResponse = userService.getUserById(userId)
+    @GetMapping("/{userId}")
+    fun getUserById(@PathVariable userId: UUID): GetUserResponse = userService.getUserById(userId)
 //
 //    @GetMapping
 //    fun getMultipleUsers(): GetMultipleUsersResponse = userService.getMultipleUsers()

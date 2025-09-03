@@ -30,6 +30,9 @@ dependencies {
 
     implementation("org.mapstruct:mapstruct:1.5.5.Final")
     kapt("org.mapstruct:mapstruct-processor:1.5.5.Final")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.squareup.moshi:moshi:1.15.2")
+    implementation("com.squareup.moshi:moshi-kotlin:1.15.2")
     implementation("com.h2database:h2")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
