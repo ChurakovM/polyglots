@@ -1,0 +1,23 @@
+openapi: 3.0.3
+info:
+  title: User API
+  version: 1.0.0
+paths:
+  /users:
+    post:
+      summary: Endpoint to create a new user
+      requestBody:
+        description: User info to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "user-spec-components.yaml#/components/schemas/PostUserRequest"
+      responses:
+        "201":
+          description: New User is successfully created
+          content:
+            application/json:
+              schema:
+                $ref: "user-spec-components.yaml#/components/schemas/PostUserResponse"
+
