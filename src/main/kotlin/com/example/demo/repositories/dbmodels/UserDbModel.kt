@@ -10,7 +10,9 @@ data class UserDbModel(
     @Id
     var id: UUID,
 
-    var nickname: String,
+    var username: String,
+
+    var password: String,
 
     var firstName: String,
 

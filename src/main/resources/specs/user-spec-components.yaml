@@ -3,13 +3,11 @@ components:
     CommonUserModel:
       type: object
       required:
-        - nickname
+        - username
         - email
         - phoneNumber
-        - firstName
-        - secondName
       properties:
-        nickname:
+        username:
           type: string
           minLength: 5
           maxLength: 20
@@ -42,6 +40,14 @@ components:
     PostUserRequest:
       allOf:
         - $ref: "#/components/schemas/CommonUserModel"
+        - type: object
+          required:
+            - password
+          properties:
+            password:
+              type: string
+              minLength: 10
+              maxLength: 50
     PostUserResponse:
       allOf:
         - $ref: "#/components/schemas/CommonUserModelWithId"

@@ -72,7 +72,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 }
 
 openApiGenerate {
-    generatorName.set("kotlin") // TODO: Make it as Spring
+    generatorName.set("kotlin") // TODO: Make it Spring
     inputSpec.set("$rootDir/src/main/resources/specs/user-spec-api.yaml") // your spec path
     outputDir.set("$buildDir/generated")
     apiPackage.set("com.example.api")
