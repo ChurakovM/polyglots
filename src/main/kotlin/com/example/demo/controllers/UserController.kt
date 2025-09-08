@@ -1,33 +1,35 @@
 package com.example.demo.controllers
 
 import com.example.demo.services.UserService
-import com.example.model.GetMultipleUsersResponse
-import com.example.model.GetUserResponse
-import com.example.model.PostUserRequest
-import com.example.model.PostUserResponse
-import org.springframework.validation.annotation.Validated
-import org.springframework.web.bind.annotation.DeleteMapping
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
+import com.example.generated.apis.DefaultApi
+import com.example.generated.models.GetMultipleUsersResponse
+import com.example.generated.models.GetUserResponse
+import com.example.generated.models.PostUserRequest
+import com.example.generated.models.PostUserResponse
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RestController
-import java.util.UUID
+import java.util.*
 
 @RestController
-@RequestMapping("/users")
-open class UserController(private val userService: UserService) {
+class UserController(private val userService: UserService): DefaultApi {
 
-    @PostMapping
-    fun createUser(@Validated @RequestBody postUserRequest: PostUserRequest): PostUserResponse = userService.createUser(postUserRequest)
+    override fun usersPost(postUserRequest: PostUserRequest): ResponseEntity<PostUserResponse> {
+        val response = userService.createUser(postUserRequest)
+        return ResponseEntity<PostUserResponse>(response, HttpStatus.CREATED)
+    }
 
-    @GetMapping("/{userId}")
-    fun getUserById(@PathVariable userId: UUID): GetUserResponse = userService.getUserById(userId)
+    override fun usersUserIdGet(userId: String): ResponseEntity<GetUserResponse> {
+        val userUuId = UUID.fromString(userId)
+        val response = userService.getUserById(userUuId)
+        return ResponseEntity<GetUserResponse>(response, HttpStatus.OK)
+    }
 
-    @GetMapping
-    fun getMultipleUsers(): GetMultipleUsersResponse = userService.getMultipleUsers()
-
-    @DeleteMapping("/{userId}")
-    fun removeUserById(@PathVariable userId: UUID) = userService.removeUserById(userId)
+    override fun usersGet(): ResponseEntity<GetMultipleUsersResponse> {
+        val response = userService.getMultipleUsers()
+        return ResponseEntity<GetMultipleUsersResponse>(response, HttpStatus.OK)
+    }
+//
+//    @DeleteMapping("/{userId}")
+//    fun removeUserById(@PathVariable userId: UUID) = userService.removeUserById(userId)
 }

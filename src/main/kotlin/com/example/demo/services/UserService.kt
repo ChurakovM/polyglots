@@ -3,10 +3,10 @@ package com.example.demo.services
 import com.example.demo.mappings.UserMapper
 import com.example.demo.repositories.UserRepository
 import com.example.demo.repositories.dbmodels.UserDbModel
-import com.example.model.GetMultipleUsersResponse
-import com.example.model.GetUserResponse
-import com.example.model.PostUserRequest
-import com.example.model.PostUserResponse
+import com.example.generated.models.GetMultipleUsersResponse
+import com.example.generated.models.GetUserResponse
+import com.example.generated.models.PostUserRequest
+import com.example.generated.models.PostUserResponse
 import org.springframework.stereotype.Service
 import java.util.*
 

@@ -42,9 +42,15 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
+// Prevent kapt from processing OpenAPI-generated code
 kapt {
     correctErrorTypes = true
     includeCompileClasspath = false
+
+    // exclude the generated sources
+    javacOptions {
+        option("-Xmaxerrs", 500)
+    }
 }
 
 kotlin {
@@ -72,22 +78,44 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 }
 
 openApiGenerate {
-    generatorName.set("kotlin") // TODO: Make it Spring
+    generatorName.set("kotlin-spring")
+    library.set("spring-boot")
     inputSpec.set("$rootDir/src/main/resources/specs/user-spec-api.yaml") // your spec path
     outputDir.set("$buildDir/generated")
-    apiPackage.set("com.example.api")
-    modelPackage.set("com.example.model")
-    invokerPackage.set("com.example.invoker")
+    packageName.set("com.example.generated")
+
+    // Prevent test stubs if you don’t need them
     generateApiTests.set(false)               // optional
     generateModelTests.set(false)             // optional
+
+    // Key option: generate interfaces only
+    configOptions.set(
+        mapOf(
+            "interfaceOnly" to "true",
+            "useSpringBoot3" to "true",
+            "useTags" to "true", // optional: groups controllers by tag
+            "serializableModel" to "true", // generates plain models without extra funky annotations
+            "useBeanValidation" to "true",         // makes models cleaner
+            "annotationLibrary" to "SWAGGER2"       // ensures only @JsonProperty on fields
+        )
+    )
 }
 
 sourceSets {
     main {
         kotlin {
             srcDir("$buildDir/generated/src/main/kotlin")
+            exclude("**/*.java")
         }
     }
+    create("openApi") {
+        kotlin.srcDir("$buildDir/generated/src/main/kotlin")
+    }
+}
+
+configurations {
+    // kapt should not use the openApi set
+    kapt.get().exclude(group = "com.example.model")
 }
 
 
