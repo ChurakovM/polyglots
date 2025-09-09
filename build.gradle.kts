@@ -6,6 +6,7 @@ plugins {
 	id("org.springframework.boot") version "3.5.5"
 	id("io.spring.dependency-management") version "1.1.7"
     id("org.openapi.generator") version "7.15.0"
+    id("io.swagger.core.v3.swagger-gradle-plugin") version "2.2.36"
 }
 
 group = "com.example"
@@ -33,6 +34,9 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.squareup.moshi:moshi:1.15.2")
     implementation("com.squareup.moshi:moshi-kotlin:1.15.2")
+    implementation("jakarta.validation:jakarta.validation-api:3.1.1")
+    implementation("io.swagger.core.v3:swagger-annotations:2.2.36")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.13")
     implementation("com.h2database:h2")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 

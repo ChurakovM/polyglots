@@ -1,10 +1,10 @@
 package com.example.demo.mappings
 
 import com.example.demo.repositories.dbmodels.UserDbModel
-import com.example.model.CommonUserModelWithId
-import com.example.model.GetUserResponse
-import com.example.model.PostUserRequest
-import com.example.model.PostUserResponse
+import com.example.generated.models.CommonUserModelWithId
+import com.example.generated.models.GetUserResponse
+import com.example.generated.models.PostUserRequest
+import com.example.generated.models.PostUserResponse
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping
 
