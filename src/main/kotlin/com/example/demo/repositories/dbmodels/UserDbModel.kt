@@ -14,9 +14,9 @@ data class UserDbModel(
 
     var password: String,
 
-    var firstName: String,
+    var firstName: String?,
 
-    var secondName: String,
+    var secondName: String?,
 
     var email: String,
 
