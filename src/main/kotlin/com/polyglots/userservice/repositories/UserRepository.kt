@@ -1,6 +1,6 @@
-package com.example.demo.repositories
+package com.polyglots.userservice.repositories
 
-import com.example.demo.repositories.dbmodels.UserDbModel
+import com.polyglots.userservice.repositories.dbmodels.UserDbModel
 import org.springframework.data.jpa.repository.JpaRepository
 import java.util.UUID
 

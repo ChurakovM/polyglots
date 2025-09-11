@@ -1,6 +1,6 @@
-package com.example.demo.mappings
+package com.polyglots.userservice.mappings
 
-import com.example.demo.repositories.dbmodels.UserDbModel
+import com.polyglots.userservice.repositories.dbmodels.UserDbModel
 import com.example.generated.models.CommonUserModelWithId
 import com.example.generated.models.GetUserResponse
 import com.example.generated.models.PostUserRequest

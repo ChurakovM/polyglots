@@ -1,6 +1,6 @@
-package com.example.demo.controllers
+package com.polyglots.userservice.controllers
 
-import com.example.demo.services.UserService
+import com.polyglots.userservice.services.UserService
 import com.example.generated.apis.DefaultApi
 import com.example.generated.models.GetMultipleUsersResponse
 import com.example.generated.models.GetUserResponse
@@ -29,7 +29,10 @@ class UserController(private val userService: UserService): DefaultApi {
         val response = userService.getMultipleUsers()
         return ResponseEntity<GetMultipleUsersResponse>(response, HttpStatus.OK)
     }
-//
-//    @DeleteMapping("/{userId}")
-//    fun removeUserById(@PathVariable userId: UUID) = userService.removeUserById(userId)
+
+    override fun usersUserIdDelete(userId: String): ResponseEntity<Unit> {
+        val userUuId = UUID.fromString(userId)
+        userService.removeUserById(userUuId)
+        return ResponseEntity(HttpStatus.NO_CONTENT)
+    }
 }

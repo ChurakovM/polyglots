@@ -1,4 +1,4 @@
-package com.example.demo.repositories.dbmodels
+package com.polyglots.userservice.repositories.dbmodels
 
 import jakarta.persistence.Entity
 import jakarta.persistence.Id

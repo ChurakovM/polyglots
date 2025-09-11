@@ -45,3 +45,14 @@ paths:
             application/json:
               schema:
                 $ref: "user-spec-components.yaml#/components/schemas/GetUserResponse"
+    delete:
+      summary: Endpoint to delete a user by ID
+      parameters:
+        - in: path
+          name: userId
+          schema:
+            type: string
+          required: true
+      responses:
+        "204":
+          description: User is successfully deleted
