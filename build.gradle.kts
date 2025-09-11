@@ -9,9 +9,9 @@ plugins {
     id("io.swagger.core.v3.swagger-gradle-plugin") version "2.2.36"
 }
 
-group = "com.example"
+group = "com.polyglots"
 version = "0.0.1-SNAPSHOT"
-description = "Social network for polyglots"
+description = "User Service"
 
 java {
 	toolchain {
