@@ -1,12 +1,12 @@
 package com.polyglots.userservice.services
 
+import com.polyglots.userclientapi.model.GetMultipleUsersResponse
+import com.polyglots.userclientapi.model.GetUserResponse
+import com.polyglots.userclientapi.model.PostUserRequest
+import com.polyglots.userclientapi.model.PostUserResponse
 import com.polyglots.userservice.mappings.UserMapper
 import com.polyglots.userservice.repositories.UserRepository
 import com.polyglots.userservice.repositories.dbmodels.UserDbModel
-import com.example.generated.models.GetMultipleUsersResponse
-import com.example.generated.models.GetUserResponse
-import com.example.generated.models.PostUserRequest
-import com.example.generated.models.PostUserResponse
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import java.util.*

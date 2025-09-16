@@ -1,11 +1,11 @@
 package com.polyglots.userservice.controllers
 
+import com.polyglots.userclientapi.api.DefaultApi
+import com.polyglots.userclientapi.model.GetMultipleUsersResponse
+import com.polyglots.userclientapi.model.GetUserResponse
+import com.polyglots.userclientapi.model.PostUserRequest
+import com.polyglots.userclientapi.model.PostUserResponse
 import com.polyglots.userservice.services.UserService
-import com.example.generated.apis.DefaultApi
-import com.example.generated.models.GetMultipleUsersResponse
-import com.example.generated.models.GetUserResponse
-import com.example.generated.models.PostUserRequest
-import com.example.generated.models.PostUserResponse
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RestController
