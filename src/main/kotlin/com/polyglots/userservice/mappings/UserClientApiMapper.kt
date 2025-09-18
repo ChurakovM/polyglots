@@ -9,7 +9,7 @@ import org.mapstruct.Mapper
 import org.mapstruct.Mapping
 
 @Mapper(componentModel = "spring")
-interface UserMapper {
+interface UserClientApiMapper {
 
     @Mapping(target = "id", expression = "java(java.util.UUID.randomUUID())")
     fun postUserRequestToUserDbModel(postUserRequest: PostUserRequest): UserDbModel

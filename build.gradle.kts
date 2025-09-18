@@ -25,8 +25,9 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 
-    implementation("org.mapstruct:mapstruct:1.5.5.Final")
-    kapt("org.mapstruct:mapstruct-processor:1.5.5.Final")
+    val mapStructVersion = "1.5.5.Final"
+    implementation("org.mapstruct:mapstruct:$mapStructVersion")
+    kapt("org.mapstruct:mapstruct-processor:$mapStructVersion")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.squareup.moshi:moshi:1.15.2")
     implementation("com.squareup.moshi:moshi-kotlin:1.15.2")
@@ -38,6 +39,7 @@ dependencies {
 
     // My specs
     implementation("com.github.Polyglots-Network:user-client-api:1.0.0")
+    implementation("com.github.Polyglots-Network:user-service-api:1.0.0")
 
 	runtimeOnly("org.postgresql:postgresql")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
